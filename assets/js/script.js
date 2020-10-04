@@ -3,21 +3,44 @@ var lowerCase = "abcdefghijklmnopqrstuvwxyz"
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numbers = "0123456789"
 var spCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-var pwdOptions = ""
+var pwdCharacters = ""
 
-// Greeting and verify user would like to generate a new password
-var newPassword = window.confirm("Welcome to Barron's Secure Password Generator! Would you like to generate a new password?");
+function generatePassword() {
+  var pwdLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters."));
+  console.log(pwdLength)
+    if (isNaN(pwdLength)) {
+      window.alert("Invalid entry. Please try again.");
+      generatePassword();
+    }
+    if (pwdLength < 8 || pwdLength > 128) {
+      window.alert("Invalid entry. Please try again.");
+      generatePassword();
+    }
+  
+  var confirmLower = window.confirm("Would you like your password to contain lower case letters?");
+    if (confirmLower) {
+      pwdCharacters = pwdCharacters + lowerCase
+      console.log(pwdCharacters);
+    }
 
-var generatePassword = function() {
-  if (newPassword) {
-    var pwdLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters."));
-    console.log(pwdLength)
-  } else {
-    window.alert("Thanks for stopping by - come again soon!")
-  }
-};
+  var confirmUpper = window.confirm("Would you like your password to contain upper case letters?");
+    if (confirmUpper) {
+      pwdCharacters = pwdCharacters + upperCase
+      console.log(pwdCharacters);
+    }
 
-pwdCriteria()
+  var confirmNumber = window.confirm("Would you like your password to contain numbers?");
+    if (confirmNumber) {
+      pwdCharacters = pwdCharacters + numbers
+      console.log(pwdCharacters);
+    }
+
+  var confirmSpChar = window.confirm("Would you like your password to contain special characters?");
+    if (confirmSpChar) {
+      pwdCharacters = pwdCharacters + spCharacters
+      console.log(pwdCharacters);
+    }
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
