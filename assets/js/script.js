@@ -7,7 +7,7 @@ var pwdCharacters = ""
 
 function generatePassword() {
   var pwdLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters."));
-  console.log(pwdLength)
+  console.log("Password length is " + pwdLength)
     if (isNaN(pwdLength)) {
       window.alert("Invalid entry. Please try again.");
       generatePassword();
@@ -20,26 +20,36 @@ function generatePassword() {
   var confirmLower = window.confirm("Would you like your password to contain lower case letters?");
     if (confirmLower) {
       pwdCharacters = pwdCharacters + lowerCase
-      console.log(pwdCharacters);
+      console.log("Current usable password characters are " + pwdCharacters);
     }
 
   var confirmUpper = window.confirm("Would you like your password to contain upper case letters?");
     if (confirmUpper) {
       pwdCharacters = pwdCharacters + upperCase
-      console.log(pwdCharacters);
+      console.log("Current usable password characters are " + pwdCharacters);
     }
 
   var confirmNumber = window.confirm("Would you like your password to contain numbers?");
     if (confirmNumber) {
       pwdCharacters = pwdCharacters + numbers
-      console.log(pwdCharacters);
+      console.log("Current usable password characters are " + pwdCharacters);
     }
 
   var confirmSpChar = window.confirm("Would you like your password to contain special characters?");
     if (confirmSpChar) {
       pwdCharacters = pwdCharacters + spCharacters
-      console.log(pwdCharacters);
+      console.log("Current usable password characters are " + pwdCharacters);
     }
+  
+  var password = "";
+  for (i=0; i < pwdLength; i++) {
+    //for each iteration, generate a random number and multiply by # of available characters
+    var randomChar = Math.floor(Math.random() * pwdCharacters.length);
+    password = password + pwdCharacters.charAt(randomChar);
+    console.log("In progress password is: " + password);
+  }
+  console.log("Final random password is: " + password);
+  return password;
 }
 
 // Get references to the #generate element
