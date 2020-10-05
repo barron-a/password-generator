@@ -25,35 +25,37 @@ function generatePassword() {
   var confirmLower = window.confirm("Would you like your password to contain lower case letters?");
     if (confirmLower) {
       pwdCharacters = pwdCharacters + lowerCase
-      console.log(pwdCharacters);
+      console.log("Current available password characters: " + pwdCharacters);
     }
 
   var confirmUpper = window.confirm("Would you like your password to contain upper case letters?");
     if (confirmUpper) {
       pwdCharacters = pwdCharacters + upperCase
-      console.log(pwdCharacters);
+      console.log("Current available password characters: " + pwdCharacters);
     }
 
   var confirmNumber = window.confirm("Would you like your password to contain numbers?");
     if (confirmNumber) {
       pwdCharacters = pwdCharacters + numbers
-      console.log(pwdCharacters);
+      console.log("Current available password characters: " + pwdCharacters);
     }
 
   var confirmSpChar = window.confirm("Would you like your password to contain special characters?");
     if (confirmSpChar) {
       pwdCharacters = pwdCharacters + spCharacters
-      console.log(pwdCharacters);
+      console.log("Current available password characters: " + pwdCharacters);
     }
   
   var password = "";
   for (i=0; i < pwdLength; i++) {
     //for each iteration, generate a random number and multiply by # of available characters
     var randomChar = Math.floor(Math.random() * pwdCharacters.length);
-    password = password + pwdCharacters[randomChar];
-    console.log(password);
+    password = password + pwdCharacters.charAt(randomChar);
+    console.log("In progress password is: " + password);
   }
+  console.log("Full randomly generated password is: " + password);
   return password;
+  
 }
 
 // Get references to the #generate element
