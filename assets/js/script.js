@@ -5,6 +5,7 @@ var numbers = "0123456789";
 var spCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 var pwdCharacters = "";
 
+//Function to verify user enters a valid password length
 function verifyLength() {
   var pwdLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters."));
 
@@ -12,45 +13,65 @@ function verifyLength() {
       window.alert("Invalid entry. Please try again.");
       return verifyLength();
     } else {
-      console.log("Password length is " + pwdLength);
+      console.log("Requested password length is " + pwdLength);
       return pwdLength;
     }
 }
 
+//Function to prompt user for character types and to generate their random password
 function generatePassword() {
 
+  //Bring in user's password length selection from verifyLength() function
   var pwdLength = verifyLength();
-  console.log(pwdLength);
   
+  //If statements to prompt user for password criteria and ensure they choose at least one
   var confirmLower = window.confirm("Would you like your password to contain lower case letters?");
     if (confirmLower) {
-      pwdCharacters = pwdCharacters + lowerCase
-      console.log("Current available password characters: " + pwdCharacters);
+      pwdCharacters += lowerCase
+      console.log("User would like lower case letters. Current available characters are: " + pwdCharacters);
+      window.alert("👍🏼 Lower case letters will be added to your password recipe.");
+    } else {
+      window.alert("Ok. Lower case letters will be omitted from your password recipe.");
     }
 
   var confirmUpper = window.confirm("Would you like your password to contain upper case letters?");
     if (confirmUpper) {
-      pwdCharacters = pwdCharacters + upperCase
-      console.log("Current available password characters: " + pwdCharacters);
+      pwdCharacters += upperCase
+      console.log("User would like upper case letters. Current available characters are: " + pwdCharacters);
+      window.alert("👍🏼 Upper case letters will be added to your password recipe.");
+    } else {
+      window.alert("Ok. Upper case letters will be omitted from your password recipe.");
     }
 
   var confirmNumber = window.confirm("Would you like your password to contain numbers?");
     if (confirmNumber) {
-      pwdCharacters = pwdCharacters + numbers
-      console.log("Current available password characters: " + pwdCharacters);
+      pwdCharacters += numbers
+      console.log("User would like numbers. Current available characters are: " + pwdCharacters);
+      window.alert("👍🏼 Numbers will be added to your password recipe.");
+    } else {
+      window.alert("Ok. Numbers will be omitted from your password recipe.");
     }
 
   var confirmSpChar = window.confirm("Would you like your password to contain special characters?");
     if (confirmSpChar) {
-      pwdCharacters = pwdCharacters + spCharacters
-      console.log("Current available password characters: " + pwdCharacters);
+      pwdCharacters += spCharacters
+      console.log("User would like special characters. Current available characters are: " + pwdCharacters);
+      window.alert("👍🏼 Special characters will be added to your password recipe.");
+    } else {
+      window.alert("Ok. Special characters will be omitted from your password recipe.");
+    }
+
+    if (confirmLower === false && confirmUpper === false && confirmNumber === false && confirmSpChar === false) {
+      window.alert("You must accept at least one of the available password criteria to generate a password.");
+      return generatePassword();
     }
   
+  //For loop to iterate across pwdCharacters string and generate password of desired length
   var password = "";
   for (i=0; i < pwdLength; i++) {
     //for each iteration, generate a random number and multiply by # of available characters
     var randomChar = Math.floor(Math.random() * pwdCharacters.length);
-    password = password + pwdCharacters.charAt(randomChar);
+    password += pwdCharacters.charAt(randomChar);
     console.log("In progress password is: " + password);
   }
   console.log("Full randomly generated password is: " + password);
