@@ -28,7 +28,7 @@ For support with this project, contact adambarron@me.com
 
 ## Authors and acknowledgment
 
-Base code provided at: https://github.com/coding-boot-camp/friendly-parakeet
+Base code provided at: https://github.com/coding-boot-camp/friendly-parakeet  
 Additional JavaScript written by Adam Barron
 
 ## Link to GitHub Repository
