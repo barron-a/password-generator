@@ -24,7 +24,7 @@ function generatePassword() {
   //Bring in user's password length selection from verifyLength() function
   var pwdLength = verifyLength();
   
-  //If statements to prompt user for password criteria and ensure they choose at least one
+  //If statements to prompt user for password criteria
   var confirmLower = window.confirm("Would you like your password to contain lower case letters?");
     if (confirmLower) {
       pwdCharacters += lowerCase
@@ -60,7 +60,8 @@ function generatePassword() {
     } else {
       window.alert("Ok. Special characters will be omitted from your password recipe.");
     }
-
+    
+    // If statement to ensure user accepts at least one criteria
     if (confirmLower === false && confirmUpper === false && confirmNumber === false && confirmSpChar === false) {
       window.alert("You must accept at least one of the available password criteria to generate a password.");
       return generatePassword();
@@ -69,7 +70,7 @@ function generatePassword() {
   //For loop to iterate across pwdCharacters string and generate password of desired length
   var password = "";
   for (i=0; i < pwdLength; i++) {
-    //for each iteration, generate a random number and multiply by # of available characters
+    //for each iteration, generate a random number and multiply by # of "available" characters
     var randomChar = Math.floor(Math.random() * pwdCharacters.length);
     password += pwdCharacters.charAt(randomChar);
     console.log("In progress password is: " + password);
