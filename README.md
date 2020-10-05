@@ -6,9 +6,9 @@ Barron's Password Generator is a web app that allows a user to generate a random
 
 ## Visuals
 
-![Barron's Password Generator Home Screen](/assets/images/password-generator-homescreen)
-![Barron's Password Generator Character Length Prompt](/assets/images/password-generator-characterlength-prompt)
-![Barron's Password Generator User Validation](/assets/images/password-generator-validation)
+![Barron's Password Generator Home Screen](/assets/images/password-generator-homescreen.jpg)
+![Barron's Password Generator Character Length Prompt](/assets/images/password-generator-characterlength-prompt.jpg)
+![Barron's Password Generator User Validation](/assets/images/password-generator-validation.jpg)
 
 ## Technologies Used
 
