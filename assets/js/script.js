@@ -1,54 +1,58 @@
 // Establish variables
-var lowerCase = "abcdefghijklmnopqrstuvwxyz"
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numbers = "0123456789"
-var spCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-var pwdCharacters = ""
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var spCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+var pwdCharacters = "";
+
+function verifyLength() {
+  var pwdLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters."));
+
+    if (isNaN(pwdLength) || pwdLength < 8 || pwdLength > 128) {
+      window.alert("Invalid entry. Please try again.");
+      return verifyLength();
+    } else {
+      console.log("Password length is " + pwdLength);
+      return pwdLength;
+    }
+}
 
 function generatePassword() {
-  var pwdLength = parseInt(window.prompt("Please select a password length between 8 and 128 characters."));
-  console.log("Password length is " + pwdLength)
-    if (isNaN(pwdLength)) {
-      window.alert("Invalid entry. Please try again.");
-      generatePassword();
-    }
-    if (pwdLength < 8 || pwdLength > 128) {
-      window.alert("Invalid entry. Please try again.");
-      generatePassword();
-    }
+
+  var pwdLength = verifyLength();
+  console.log(pwdLength);
   
   var confirmLower = window.confirm("Would you like your password to contain lower case letters?");
     if (confirmLower) {
       pwdCharacters = pwdCharacters + lowerCase
-      console.log("Current usable password characters are " + pwdCharacters);
+      console.log(pwdCharacters);
     }
 
   var confirmUpper = window.confirm("Would you like your password to contain upper case letters?");
     if (confirmUpper) {
       pwdCharacters = pwdCharacters + upperCase
-      console.log("Current usable password characters are " + pwdCharacters);
+      console.log(pwdCharacters);
     }
 
   var confirmNumber = window.confirm("Would you like your password to contain numbers?");
     if (confirmNumber) {
       pwdCharacters = pwdCharacters + numbers
-      console.log("Current usable password characters are " + pwdCharacters);
+      console.log(pwdCharacters);
     }
 
   var confirmSpChar = window.confirm("Would you like your password to contain special characters?");
     if (confirmSpChar) {
       pwdCharacters = pwdCharacters + spCharacters
-      console.log("Current usable password characters are " + pwdCharacters);
+      console.log(pwdCharacters);
     }
   
   var password = "";
   for (i=0; i < pwdLength; i++) {
     //for each iteration, generate a random number and multiply by # of available characters
     var randomChar = Math.floor(Math.random() * pwdCharacters.length);
-    password = password + pwdCharacters.charAt(randomChar);
-    console.log("In progress password is: " + password);
+    password = password + pwdCharacters[randomChar];
+    console.log(password);
   }
-  console.log("Final random password is: " + password);
   return password;
 }
 
