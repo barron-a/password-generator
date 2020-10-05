@@ -2,7 +2,7 @@
 
 ## Description
 
-Barron's Password Generator is a web app that allows a user to generate a random password between 8 and 128 characters. The user is prompted to include or exclude certain types of characters (lower case letters, upper case letters, numbers, and special characters)
+Barron's Password Generator is a web app that allows a user to generate a random password between 8 and 128 characters. The user is prompted to include or exclude certain types of characters (lower case letters, upper case letters, numbers, and special characters). After each prompt, the user response is validated. Once all prompts are completed, the user is provided with a password based on their selected criteria.
 
 ## Visuals
 
